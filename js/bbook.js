@@ -11,7 +11,7 @@ function attemptUserLogin(){
     }
 
     $.post( // shorthand jQuery $.ajax type:POST func call
-        "includes/process_login.php", 
+        "includes/process_login.php",
         "action=login&user="+loginUser+"&pass="+loginPass,
         function(response){ // if successful, hide form, show links. else show error
             if (response == 1){
@@ -41,24 +41,13 @@ var bbook = angular.module('bbook', ['ngRoute','ngAnimate']);
 
 // configure our routes
 bbook.config(function($routeProvider) {
-    $routeProvider        
+    $routeProvider
         // Top nav bar
-        .when('/profile', {
-            templateUrl : 'pages/profile.php',
-            controller  : 'profileController'
-        })
-
-        // .when('/settings', {
-        //     templateUrl : 'pages/404.html',
-        //     controller  : 'Controller'
+        // .when('/profile', {
+        //     templateUrl : 'pages/profile.php',
+        //     controller  : 'profileController'
         // })
 
-        .when('/help', {
-            templateUrl : 'pages/help.php',
-            // controller  : 'helpController'
-        })
-
-        // Side bar
         .when('/', {
             templateUrl : 'pages/dashboard.php',
             controller  : 'mainController'
@@ -70,9 +59,14 @@ bbook.config(function($routeProvider) {
         })
 
         .when('/browse/:skillLevel/:skillId', {
-            templateUrl : function(params){ 
+            templateUrl : function(params){
                 return 'pages/skill_details.php?skill_id=' + params.skillId; },
                 controller  : 'skillDetailsController'
+        })
+
+        .when('/progressions', {
+            templateUrl : 'pages/progressions.php',
+            controller  : 'treeController'
         })
 
         .when('/tree', {
@@ -87,7 +81,7 @@ bbook.config(function($routeProvider) {
         })
 
         .when('/edit/:skillLevel/:skillId', {
-            templateUrl : function(params){ 
+            templateUrl : function(params){
                 return 'pages/add.php?level=' + params.skillLevel + '&skill_id=' + params.skillId; },
             // controller  : 'editController'
         })
@@ -106,17 +100,17 @@ bbook.controller('mainController', function($scope) {
 
 bbook.controller('browseController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
 
-    if($routeParams.skillLevel != 'all'){
-        console.log($('#'+$routeParams.skillLevel).offset().top-60);
-        console.log($('#'+$routeParams.skillLevel).offset().top-60);
+    // if($routeParams.skillLevel != 'all'){
+    //     console.log($('#'+$routeParams.skillLevel).offset().top-60);
+    //     console.log($('#'+$routeParams.skillLevel).offset().top-60);
 
-        scrollTo(0,$('#'+$routeParams.skillLevel).offset().top-60);
-    }
+    //     scrollTo(0,$('#'+$routeParams.skillLevel).offset().top-60);
+    // }
 
-    // for changing page from code
-    $scope.go = function ( path ) {
-      $location.path( path );
-    };
+    // // for changing page from code
+    // $scope.go = function ( path ) {
+    //   $location.path( path );
+    // };
 }]);
 
 bbook.controller('skillDetailsController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){

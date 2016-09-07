@@ -1,9 +1,12 @@
-<?php 
-($_SERVER['SERVER_NAME'] == 'localhost')?
+<?php
+// echo $_SERVER['SERVER_NAME'];
+$_SERVER['SERVER_NAME'] == 'bouncebook'?
+    // If using local wamp mysql db...
     $db = new mysqli("localhost", "root", "", "bouncebook"): // for local environment
+    // But want to use remote server from local
+    // $db = new mysqli("192.185.18.236", "ucdtramp_user", "showmeALL", "ucdtramp_bb"):
     $db = new mysqli("127.0.0.1", "ucdtramp_user", "showmeALL", "ucdtramp_bb"); // server environment
 
-    //$db = new mysqli("127.0.0.1", "ucdtramp_bbuser", "whydiditnotwork", "ucdtramp_bb"); // server environment
 
 session_start(); // Starting Session
 $loggedIn = false;
@@ -12,8 +15,6 @@ if (isset($_SESSION['login_user'])) {
     $loggedIn = $userExists['user'];
     $perms = $userExists['perms'];
 }
-
-// var_dump( mysqli_query($db, "INSERT INTO `ucdtramp_bb`.`skills` (name) VALUES 'go'"));
 
 function setTitle($title){
     echo '
@@ -64,10 +65,10 @@ function getAllSkillNamesJSON(){
     //     children : [{
     //         id   : 0,
     //         text : "Item One"
-    //     }, { 
+    //     }, {
     //         ...
     //     }]
-    // }] 
+    // }]
 
     // Get the sql data into an assoc array grouped by level
     $groupedSkills = array();
@@ -88,7 +89,7 @@ function getAllSkillNamesJSON(){
             $spitOutJSONSkills .= '{
                 id: "'.$selectSkill['name'].'",
                 text: "'.$selectSkill['name'].'"
-            },'; 
+            },';
         }
 
         $spitOutJSONSkills .= '

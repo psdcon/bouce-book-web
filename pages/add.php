@@ -1,9 +1,10 @@
 <?php
 require_once('../includes/db.php');
+setTitle("Bounce Book - Add Skill");
 
 $skill = null;
 if (isset($_GET[ 'skill_id'])){
-    $skill_query = mysqli_query($db, "SELECT * FROM skills WHERE id='".$_GET[ 'skill_id']."' LIMIT 1"); 
+    $skill_query = mysqli_query($db, "SELECT * FROM skills WHERE id='".$_GET[ 'skill_id']."' LIMIT 1");
     $skill = mysqli_fetch_assoc($skill_query);
 }
 
@@ -55,7 +56,7 @@ echo '
         <div class="col-sm-1">
             <input type="number" step="0.1" class="form-control" id="shape_bonus" placeholder="0.0" value="<?=$shape_bonus?>">
         </div>
-        
+
     </div>
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">Level</label>
@@ -118,7 +119,7 @@ echo '
         <div class="col-sm-10">
             <textarea class="form-control" rows="3" id="coaching_points" placeholder="Defy gravity"><?=$coaching_points?></textarea>
         </div>
-    </div> 
+    </div>
     <div class="form-group">
         <div class="col-sm-2 control-label">
             <label for="lateral_prog">Lateral Progressions</label>
@@ -157,7 +158,7 @@ echo '
     // Set up select2 inputs
     var select2Options = {
         placeholder: "Select some skills",
-        data: skillNames, 
+        data: skillNames,
         tags: true
     };
     $("#lateral_prog")

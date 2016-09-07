@@ -1,2 +1,0 @@
-[22-Feb-2016 03:16:59 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/ucdtramp/public_html/bb/includes/db.php:6) in /home1/ucdtramp/public_html/bb/includes/db.php on line 7
-[22-Feb-2016 03:19:57 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home1/ucdtramp/public_html/bb/includes/db.php on line 14

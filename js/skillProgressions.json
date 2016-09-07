@@ -1,0 +1,285 @@
+[
+    {
+        "name": "Straight Bounce",
+        "prereq": ["Straight bounce and stop"],
+        "lateral_progressions": {
+            "Shapes": [
+                "Tuck Jump",
+                "Pike Jump",
+                "Straddle Jump"
+            ]
+        },
+        "linear_progression": [
+            "Twist"
+        ]
+    },
+    {
+        "name": "Twist",
+        "prereq": ["Straight bounce"],
+        "lateral_progressions": {
+            "Rotations": [
+                "Half Twist Jump",
+                "Full Twist Jump",
+                "1&1/2 Twist Jump"
+            ]
+        },
+        "linear_progression": [
+            "Seat"
+        ]
+    },
+    {
+        "name": "Seat",
+        "lateral_progressions": {
+            "Variations In": [
+                "Half to seat",
+                "Full to seat"
+            ],
+            "Variations Out": [
+                "Half to feet",
+                "Full to feet",
+                "1 and a half to feet"
+            ],
+            "twist and somi rot": [
+                "Swivel hips (Seat to seat with half twist and a sort of half somi rotation)"
+            ],
+            "axis rotation": [
+                "Roller (Seat to seat, full twist about longitudinal)"
+            ]
+        },
+        "linear_progression": [
+            "Front drop",
+            "Back Drop"
+        ]
+    },
+    {
+        "name": "Front Drop",
+        "lateral_progressions": {
+            "Variations In": [
+                "Airplane",
+                "Full Twist to Front"
+            ],
+            "Variations Out": [
+                "Half to Feet",
+                "Full to Feet"
+            ],
+            "Front Bouncing Shapes and Rotations": [
+                "Front Bounce",
+                "Front Bounce Shaped",
+                "Toilet Roll"
+            ],
+            "Rotations - Longitudinal (Twist |), Lateral (Somersault -) & Dorsal (+)": [
+                "Front to Back",
+                "Turntable",
+                "Cruise  Front",
+                "Full Twisting Cruise",
+                "Cruise Plus Front"
+            ]
+        },
+        "linear_progression": [
+            "Front Somersault"
+        ]
+    },
+    {
+        "name": "Back Drop",
+        "lateral_progressions": {
+            "Variations In": [
+                "Half to back",
+                "Full to back"
+            ],
+            "Variations Out": [
+                "Half to feet",
+                "Full to feet",
+                "1 and a half to feet"
+            ],
+            "Front Bouncing Shapes and Rotations": [
+                "Back bouncing",
+                "Back tuck",
+                "Back pike",
+                "Back straddle"
+            ],
+            "Rotations - Longitudinal (Twist |), Lateral (Somersault -) & Dorsal (+)": [
+                "Back to Front",
+                "Cradle (back half to back, 1/2 somersault rotation plus half twist rotation)",
+                "Reverse cradle (Bluish https://www.youtube.com/watch?v=QglYuq7DaYg)(Back pullover half twist to back)",
+                "Back full to front (1/2 somersault rotation plus full twist rotation)",
+                "Back 1 and a half to back (1/2 somersault rotation plus 1&1/2 twist rotation)"
+            ],
+            "axis rotation": [
+                "Cat twist (back to back, no somi, only 1 full twist rotation)",
+                "Double cat twist (back to back, no somi, 2 full twist rotation)",
+                "Toilet bowl (Back to back dorsal axis. Flat back landing)"
+            ]
+        },
+        "linear_progression": [
+            "Back Somersault"
+        ]
+    },
+    {
+        "name": "Front Somersault",
+        "prereq": [
+            "Hands & knees, hand stand, forward roll out",
+            "3/4 turnover to back (no hands)",
+            "Hands & knees somersault to feet",
+            "From feet to back"
+        ],
+        "lateral_progressions": {
+            "Variations In": [
+                "Arabian",
+                "Arabian"
+            ],
+            "Variations Out": [
+                "Baraini",
+                "Full Front",
+                "Rudi (1 & 1/2)"
+            ],
+            "Starting Position": [
+                "Dolphin",
+                "Front Kaboom"
+            ],
+            "Ending Position": [
+                "Front to Face"
+            ]
+        },
+        "linear_progression": [
+            "Crash Dive"
+        ]
+    },
+    {
+        "name": "Back Somersault",
+        "prereq": [
+            "Backwards roll",
+            "3/4 back pullover"
+        ],
+        "lateral_progressions": {
+            "Variations Out": [
+                "Rodeo",
+                "Back full"
+            ],
+            "Variations In": [
+                "*Starting front and then twist. what would that even look like....*"
+            ],
+            "Shapes": [
+                "Pike back",
+                "Straight back"
+            ],
+            "Ending Position": [
+                "Back to seat",
+                "Back to back"
+            ],
+            "Starting Position":  [
+                "Back Kaboom (From back)"
+            ]
+        },
+        "linear_progression": [
+            "Lazy Back"
+        ]
+    },
+    {
+        "name": "Crash Dive",
+        "prereq": [
+            "Hands & knees crash dive"
+        ],
+        "lateral_progressions": {
+            "Variations In": [
+                "Half twist to crash dive"
+            ],
+            "Variations Out": [
+                "Bounce roll (Porpoise)",
+                "Full twisting bounce roll (back drop full twist to feet and crash dive in one move)"
+            ]
+        },
+        "linear_progression": [
+            "Ball Out"
+        ]
+    },
+    {
+        "name": "Lazy Back",
+        "prereq": [
+            "A fair controlled back somi"
+        ],
+        "lateral_progressions": {
+            "Got Nothing...": [
+            ]
+        },
+        "linear_progression": [
+            "Cody"
+        ]
+    },
+    {
+        "name": "Ball Out",
+        "prereq": [
+            "Front S/S",
+            "Solid back drop"
+        ],
+        "lateral_progressions": {
+            "Variations Out": [
+                "Baraini",
+                "Full front ball out",
+                "Baby fliff (cradle, back pull-over)",
+                "Rudi ball out",
+                "Randi ball out",
+                "Adolf Ball out",
+                "Half out ball out"
+            ],
+            "Shapes": [
+                "Straight front",
+                "Straight baraini ball out"
+            ]
+        },
+        "linear_progression": [
+            "1 & 3/4 Front"
+        ]
+    },
+    {
+        "name": "Cody",
+        "prereq": [
+            "Solid tuck back"
+        ],
+        "lateral_progressions": {
+            "Variations Out": [
+                "Full twisting cody to stomach (front to front)",
+                "Full cody",
+                "Appltini (double twisting cody)"
+            ],
+            "Shapes": [
+                "Straight front",
+                "Straight baraini ball out"
+            ]
+        },
+        "linear_progression": [
+            "Double Back"
+        ]
+    },
+    {
+        "name": "Double Front",
+        "prereq": [
+            "1 & 3/4 Front"
+        ],
+        "lateral_progressions": {
+            "Variations Out": [
+            ],
+            "Shapes": [
+            ]
+        },
+        "linear_progression": [
+            "Double Front"
+        ]
+    },
+    {
+        "name": "Double Back",
+        "prereq": [
+            "Back s/s to back, back pullover",
+            "Multiple back somis in a row"
+        ],
+        "lateral_progressions": {
+            "Variations Out": [
+            ],
+            "Shapes": [
+            ]
+        },
+        "linear_progression": [
+            "Double Front"
+        ]
+
+    }
+]

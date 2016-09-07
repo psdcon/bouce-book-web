@@ -1,0 +1,23 @@
+{
+  "name": "bouncebook",
+  "version": "1.0.0",
+  "description": "Trampoline encyclopedia",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "autosize": "^3.0.17",
+    "bootstrap": "^4.0.0-alpha.4",
+    "cytoscape": "^2.7.8",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.0",
+    "select2": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
