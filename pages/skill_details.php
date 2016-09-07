@@ -21,7 +21,7 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
 ?>
 <div class="clearfix">
   <h3 class="pull-left">
-    <?=$skill['name']?>
+    <?=$skill['name']!=""?$skill['name']:"No name"?>
   </h3>
 
   <?php if ($loggedIn) { ?>
@@ -33,20 +33,21 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
   <?php } ?>
 </div>
 
-<div>
-  <div class="">
+<div><!-- list container -->
+
+  <div>
     <div class="row">
       <div class="col-xs-6 col-md-2">
-        Tariff: <?=$skill['tariff']?>
+        Tariff: <?=$skill['tariff']!=""?$skill['tariff']:"No tariff"?>
       </div>
       <div class="col-xs-6 col-md-2">
-        FIG: <?=$skill['fig_notation']?>
+        FIG: <?=$skill['fig_notation']!=""?$skill['fig_notation']:"No FIG"?>
       </div>
       <div class="col-xs-6 col-md-2">
-        Start Position: <?=$skill['start_position']?>
+        Start Position: <?=$skill['start_position']!=""?$skill['start_position']:"No start"?>
       </div>
       <div class="col-xs-6 col-md-2">
-        End Position: <?=$skill['end_position']?>
+        End Position: <?=$skill['end_position']!=""?$skill['end_position']:"No end"?>
       </div>
       <div class="col-xs-6 col-md-2">
         Favourite:
@@ -90,54 +91,62 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
       </div>
     </div>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Short Description</h4>
     <p>
-      <?=nl2br($skill['short_description'], false)?>
+      <?=$skill['short_description']!=""?nl2br($skill['short_description'], false):'No short description'?>
     </p>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Long Description</h4>
     <p>
-      <?=nl2br($skill['long_description'], false)?>
+      <?=$skill['long_description']!=""?nl2br($skill['long_description'], false):'No long description'?>
     </p>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Coaching Points</h4>
     <p>
-      <?=nl2br($skill['coaching_points'], false)?>
+      <?=$skill['coaching_points']!=""?nl2br($skill['coaching_points'], false):'No coaching points'?>
     </p>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Prerequisite Skills</h4>
     <p class="well well-sm">
       <?=tags_to_links($prereqArray)?>
     </p>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Lateral Progressions</h4>
     <p class="well well-sm">
       <?=tags_to_links($skill['lateral_prog'])?>
     </p>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Linear Progressions</h4>
     <p class="well well-sm">
       <?=tags_to_links($skill['linear_prog'])?>
     </p>
   </div>
-  <div class="">
+
+  <div>
     <hr>
     <h4>Video</h4>
-    <?=nl2br($skill['vid'], false)?>
+    <?=$skill['vid']!=""?nl2br($skill['vid'], false):'No video info'?>
   </div>
-</div>
+</div><!-- /list container -->
+
 
 <script>
 
@@ -150,7 +159,7 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
       $.ajax({
         type: "POST",
         url: "includes/skills.db.php",
-        data: "action=Unfavourite&skillName=<?=$skill['name']?>",
+        data: "action=Unfavourite&skillName=<?=$skill['name']!=""?$skill['name']:""?>",
         dataType: "text",
         success: function (data) {
           console.log(data);
@@ -163,7 +172,7 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
       $.ajax({
         type: "POST",
         url: "includes/skills.db.php",
-        data: "action=Favourite&skillName=<?=$skill['name']?>",
+        data: "action=Favourite&skillName=<?=$skill['name']!=""?$skill['name']:""?>",
         dataType: "text",
         success: function (data) {
           console.log(data);
@@ -181,7 +190,7 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
       $.ajax({
         type: "POST",
         url: "includes/skills.db.php",
-        data: "action=Unknow&skillName=<?=$skill['name']?>",
+        data: "action=Unknow&skillName=<?=$skill['name']!=""?$skill['name']:""?>",
         dataType: "text",
         success: function (data) {
           console.log(data);
@@ -193,7 +202,7 @@ $userFav = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE favou
       $.ajax({
         type: "POST",
         url: "includes/skills.db.php",
-        data: "action=Know&skillName=<?=$skill['name']?>",
+        data: "action=Know&skillName=<?=$skill['name']!=""?$skill['name']:""?>",
         dataType: "text",
         success: function (data) {
           console.log(data);

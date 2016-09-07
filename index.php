@@ -30,70 +30,73 @@ require_once ('includes/db.php');
 </head>
 
 <body>
-  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-    <a class="navbar-brand" href="#/">
-      <!-- <img src="images/main_icon.jpg" style="height:100%;display:inline-block;vertical-align:baseline;" alt=""> -->
-      Bounce Book
-    </a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#/">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#skills/all">Skills</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#progressions">Progressions</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#tree">Tree</a>
-      </li>
-      <?=($loggedIn)?
-        '<li class="nav-item">
-          <span class="nav-link">|</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#add">Add skill</a>
-        </li>':'';
-      ?>
-    </ul>
+  <nav class="navbar navbar-full navbar-dark bg-inverse">
+    <div class="container">
+      <a class="navbar-brand" href="#/">
+        <!-- <img src="images/main_icon.jpg" style="height:100%;display:inline-block;vertical-align:baseline;" alt=""> -->
+        Bounce Book
+      </a>
+      <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+        &#9776;
+      </button>
 
-    <ul class="nav navbar-nav pull-right">
-        <!-- Show login link or user's name -->
-      <?=($loggedIn)?
-        '<li class="hello nav-item" title="This is not a link">
-          Hello '.$loggedIn.' :)
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="includes/process_login.php">Logout</a>
-        </li>
-        ':
-        // Else
-        '<li class="nav-item">
-          <a class="nav-link" href="" onClick="return false;" data-toggle="modal" data-target="#login-modal">Login</a>
-        </li>';
-      ?>
-    </ul>
+      <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+        <ul class="nav navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills/all">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#progressions">Progressions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tree">Tree</a>
+          </li>
+          <?=($loggedIn)?
+            '<li class="nav-item hidden-sm-down">
+              <span class="nav-link">|</span>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#add">Add skill</a>
+            </li>':'';
+          ?>
+            <!-- Show login link or user's name -->
+          <?=($loggedIn)?
+            '<div class="pull-md-right">
+              <li class="nav-item">
+                <a class="nav-link" href="includes/process_login.php">Logout</a>
+              </li>
+              <li class="hello nav-item hidden-sm-down" title="This is not a link">
+                Hello '.$loggedIn.' :)
+              </li>
+            </div>
+            ':
+            // Else
+            '<div class="pull-md-right">
+              <li class="nav-item">
+                <a class="nav-link" href="" onClick="return false" data-toggle="modal" data-target="#login-modal">Login</a>
+              </li>
+            </div>';
+          ?>
+        </ul>
+      </div><!-- /.collapse -->
+    </div>
   </nav>
-
 
   <?php include 'pages/login_modal.html'; ?>
 
-  <div class="container">
-  	<div class="row">
+  <div class="container main">
 
-  		<!-- Main content -->
-  		<div class="main">
-        <!-- Return to top arrow -->
-        <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
+      <!-- Return to top arrow -->
+      <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up" aria-hidden="true"></i></a>
 
-  			<div class="page" ng-view>
+      <div class="page" ng-view>
 
 
 
-  			</div>
-  		</div>
-  	</div>
+    </div>
   </div>
 
   <!-- Bootstrap core JavaScript
@@ -120,15 +123,15 @@ require_once ('includes/db.php');
   <script src="plugins/cytoscape/cytoscape.min.js"></script>
 
   <script>
-  	// On mobile, close the navbar when a link is clicked
-  	// $('.navbar-nav li a').click(function () {
-  	// 	if ($('.navbar-collapse').hasClass('in'))
-  	// 	    $(".navbar-toggle").click();
-  	// });
+    // On mobile, close the navbar when a link is clicked
+    // $('.navbar-nav li a').click(function () {
+    //  if ($('.navbar-collapse').hasClass('in'))
+    //      $(".navbar-toggle").click();
+    // });
 
     // Add active class to currently clicked nav item
     $("nav .navbar-nav .nav-item").click(function() {
-      $(this).parent().children().removeClass('active');
+      $("nav .navbar-nav .nav-item").removeClass('active');
       $(this).addClass('active');
     });
 

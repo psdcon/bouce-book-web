@@ -7,10 +7,6 @@ setTitle("Bounce Book - Progressions");
 <script src="https://use.fontawesome.com/aa1a9d6ccd.js"></script>
 
 <style>
-  body {
-    padding-top: 5rem;
-  }
-
   .knowSkill { /* Is this a known skill, do you know skill? */
     max-width: 1em;
     cursor: pointer;
@@ -76,7 +72,10 @@ foreach ($skillProgsJSON as $skillProgIndex => $skillProg) {
 
   $skillLatProgHeadings = $skillProg['lateral_progressions'];
 
-
+  if ($loggedIn) {
+    $userPwns = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE learned_skills LIKE '%".$skillLinProgName."%'"))['1'] == '1';
+    $knowSkill = $userPwns? "knowSkill": "";
+  }
 ?>
   <div class="card card-block" id="<?=string2SafeID($skillName)?>">
     <h4>
@@ -91,10 +90,12 @@ foreach ($skillProgsJSON as $skillProgIndex => $skillProg) {
       <h5>Linear Progression</h5>
       <div class="row skill-row skill-row-hover">
         <div class="col-md-3">
-          <span style="padding:0 1em 0 0;" data-click="dbPwn" data-skillname="<?=$skillName?>"
+          <?php if ($loggedIn) { ?>
+          <span  style="padding:0 1em 0 0;" data-click="dbPwn" data-skillname="<?=$skillName?>" class="<?=$knowSkill?>"
                 data-toggle="tooltip" data-placement="top" title="Click to change">
             ✓
           </span>
+          <?php } ?>
           <span onclick="$('#<?=$skillLinProgIDLink?>').scrollView();"><?=$skillLinProgName?></span>
         </div>
         <div class="col-md-2" onclick="$('#<?=$skillLinProgIDLink?>').scrollView();"><?=$skillLinProgMyFIG?></div>
@@ -118,14 +119,20 @@ foreach ($skillProgsJSON as $skillProgIndex => $skillProg) {
       <?php
         // for // skills under that title
         foreach ($skillLatProgSkills as $skillLatProgSkillsIndex => $skillLatProgSkill) {
+          if ($loggedIn) {
+            $userPwns = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE learned_skills LIKE '%".$skill['name']."%'"))['1'] == '1';
+            $knowSkill = $userPwns? "knowSkill": "";
+          }
       ?>
 
           <div class="row skill-row">
             <div class="col-md-3">
+              <?php if ($loggedIn) { ?>
               <span style="padding:0 1em 0 0;" data-click="dbPwn" data-skillname="<?=$skillName?>"
                     data-toggle="tooltip" data-placement="top" title="Click to change">
                 ✓
               </span>
+              <?php } ?>
               <span><?=$skillLatProgSkill?></span>
             </div>
             <div class="col-md-2">No my FIG</div>
@@ -139,6 +146,7 @@ foreach ($skillProgsJSON as $skillProgIndex => $skillProg) {
       </div>
     </div>
   </div>
+
   <br>
   <br>
 

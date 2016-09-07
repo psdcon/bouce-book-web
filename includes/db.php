@@ -8,7 +8,7 @@ $_SERVER['SERVER_NAME'] == 'bouncebook'?
     $db = new mysqli("127.0.0.1", "ucdtramp_user", "showmeALL", "ucdtramp_bb"); // server environment
 
 
-session_start(); // Starting Session
+session_start(); // For login
 $loggedIn = false;
 if (isset($_SESSION['login_user'])) {
     $userExists = mysqli_fetch_assoc(mysqli_query($db, "SELECT user, perms FROM users WHERE user='".$_SESSION['login_user']."'"));

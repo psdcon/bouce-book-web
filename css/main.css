@@ -1,9 +1,13 @@
 body {
-  padding-top: 5rem;
+  padding-bottom: 3rem;
 }
 
 a:hover, a:active{
 	/*animation: hop 0.2s both; */
+}
+
+.main{
+  margin-top: 1rem;
 }
 
 .page.ng-enter {
