@@ -1,3 +1,42 @@
+function attemptUserLogin(){
+    var loginUser = $('#login-user').val().trim();
+    var loginPass = $('#login-pass').val().trim();
+    var $loginError = $('#login-error');
+    $loginError.hide();
+
+    if(loginUser === '' || loginPass === ''){
+        $loginError.text('Please fill both fields');
+        $loginError.show();
+        return false;
+    }
+
+    $.post( // shorthand jQuery $.ajax type:POST func call
+        "includes/process_login.php", 
+        "action=login&user="+loginUser+"&pass="+loginPass,
+        function(response){ // if successful, hide form, show links. else show error
+            if (response == 1){
+                // refresh window on success
+                window.location.reload();
+            }
+            else if (response == 2){
+                $loginError.text('Username or password is incorrect!');
+                $loginError.show();
+            }
+            else if (response == 3){
+                $loginError.text('Please fill both fields');
+                $loginError.show();
+            }
+            else {
+                $loginError.html(response);
+                $loginError.show();
+            }
+        }
+    );
+    return false;
+}
+
+
+
 var bbook = angular.module('bbook', ['ngRoute','ngAnimate']);
 
 // configure our routes
@@ -9,14 +48,14 @@ bbook.config(function($routeProvider) {
             controller  : 'profileController'
         })
 
-        .when('/settings', {
-            templateUrl : 'pages/404.html',
-            controller  : 'Controller'
-        })
+        // .when('/settings', {
+        //     templateUrl : 'pages/404.html',
+        //     controller  : 'Controller'
+        // })
 
         .when('/help', {
             templateUrl : 'pages/help.php',
-            controller  : 'helpController'
+            // controller  : 'helpController'
         })
 
         // Side bar
@@ -32,8 +71,8 @@ bbook.config(function($routeProvider) {
 
         .when('/browse/:skillLevel/:skillId', {
             templateUrl : function(params){ 
-                return 'pages/skill_details.php?level=' + params.skillLevel + '&skill_id=' + params.skillId; },
-            // controller  : 'skillDetailsController'
+                return 'pages/skill_details.php?skill_id=' + params.skillId; },
+                controller  : 'skillDetailsController'
         })
 
         .when('/tree', {
@@ -47,20 +86,10 @@ bbook.config(function($routeProvider) {
             controller  : 'addController'
         })
 
-        .when('/edit/:skillLevel', {
-            templateUrl : 'pages/edit.php',
-            controller  : 'editController'
-        })
-
         .when('/edit/:skillLevel/:skillId', {
             templateUrl : function(params){ 
-                return 'pages/edit_skill.php?level=' + params.skillLevel + '&skill_id=' + params.skillId; },
+                return 'pages/add.php?level=' + params.skillLevel + '&skill_id=' + params.skillId; },
             // controller  : 'editController'
-        })
-
-        .when('/more', {
-            templateUrl : 'pages/404.html',
-            controller  : 'Controller'
         })
 
         .otherwise({
@@ -72,18 +101,28 @@ bbook.config(function($routeProvider) {
 // create the controller and inject Angular's $scope
 bbook.controller('mainController', function($scope) {
     // create a message to display in our view
-    $scope.message = 'Everyone come and see how good I look!';
+    $scope.message = 'Everyone aint this awesome!!';
 });
 
 bbook.controller('browseController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
 
-    if($routeParams.skillLevel)
-        changeLevelByName($routeParams.skillLevel);
+    if($routeParams.skillLevel != 'all'){
+        console.log($('#'+$routeParams.skillLevel).offset().top-60);
+        console.log($('#'+$routeParams.skillLevel).offset().top-60);
+
+        scrollTo(0,$('#'+$routeParams.skillLevel).offset().top-60);
+    }
 
     // for changing page from code
     $scope.go = function ( path ) {
       $location.path( path );
     };
+}]);
+
+bbook.controller('skillDetailsController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
+
+    scrollTo(0,0);
+
 }]);
 
 bbook.controller('treeController', ['$scope', '$routeParams',

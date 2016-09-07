@@ -1,5 +1,6 @@
 <?php
 require_once('../includes/db.php');
+setTitle("Bounce Book");
 ?>
 
 <ol class="breadcrumb">
@@ -8,85 +9,99 @@ require_once('../includes/db.php');
 </ol>
 <hr>
 
-<div class="btn-group level-buttons" style="padding-bottom:1.5em;">
-    <button type="button" class="btn btn-default active">All</button>
-    <button type="button" class="btn btn-default">Novice</button>
-    <button type="button" class="btn btn-default">Intermediate</button>
-    <button type="button" class="btn btn-default">Advanced</button>
-    <button type="button" class="btn btn-default">Elite</button>
-</div>
 
 <?php
-for($i=0;$i<4;$i++){
-    if($i==0)     $level='novice';
-    elseif($i==1) $level='intermediate';
-    elseif($i==2) $level='advanced';
-    elseif($i==3) $level='elite';
-    
-    $skills = mysqli_query($db, "SELECT * FROM skills WHERE level='".$level."' ORDER BY id ASC");
-    if (!$skills)
-        die(mysqli_error($db));
-    echo '<div class="panel panel-primary skills '.$level.'">
-            <div class="panel-heading">'.ucfirst($level).'</div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th style="width:35%">Name</th>
-                        <th style="width:62%">Short description</th>
-                    </tr>
-                </thead>
-
-                <tbody>';
-    
-    while($skill = mysqli_fetch_array($skills)){
-        echo '<tr ng-click="go(\'/browse/'.$level.'/'.$skill['id'].'\')">
-                <td></td>
-                <td>'.$skill['name'].'</td>
-                <td>'.$skill['short_desc'].'</rd>
-            </tr>';
+function stringShorten($string, $length = 100, $append = "..."){
+    if (strlen($string) <= intval($length)) {
+        return $string;
     }
-	
-	echo '    </tbody>
-            </table>
-        </div>';
-} ?>
+    return substr($string, 0, $length) . $append;
+}
+
+$groupedSkills = array();
+$skills = mysqli_query($db, "SELECT * FROM skills ORDER BY id ASC");
+while($skill = mysqli_fetch_assoc($skills)){
+    $groupedSkills[$skill['level']][] = $skill;
+}
+
+foreach ($groupedSkills as $level => $skills) { 
+
+    echo '
+    <div class="panel panel-primary skills" id="'.levelToSafeId($level).'">
+        <div class="panel-heading">'.$level.'</div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th style="width:35%">Name</th>
+                    <th style="width:62%">Description</th>
+                    <th></th>                        
+                </tr>
+            </thead>
+
+            <tbody>';   
+
+                foreach ($skills as $skill) {
+                    if ($loggedIn) {
+                        $userPwns = mysqli_fetch_assoc(mysqli_query($db, "SELECT 1 FROM users WHERE learned_skills LIKE '%".$skill['name']."%'"))['1'] == '1';
+                        $knowSkill = $userPwns? "knowSkill": "";
+                        echo '
+                        <tr>
+                        <td><span data-click="dbPwn" data-skillname="'.$skill['name'].'" data-toggle="tooltip" data-placement="top" title="Click to change" class="'.$knowSkill.'">✓</span></td>
+                            <td ng-click="go(\'/browse/'.levelToSafeId($level).'/'.$skill['id'].'\')">'.$skill['name'].'</td>
+                            <td ng-click="go(\'/browse/'.levelToSafeId($level).'/'.$skill['id'].'\')">'.stringShorten($skill['short_description']).'</td>
+                            <td><a href="#/edit/'.levelToSafeId($level).'/'.$skill['id'].'"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        </tr>';
+                    }
+                    else{
+                        echo '
+                        <tr>
+                            <td></td>
+                            <td ng-click="go(\'/browse/'.levelToSafeId($level).'/'.$skill['id'].'\')">'.$skill['name'].'</td>
+                            <td ng-click="go(\'/browse/'.levelToSafeId($level).'/'.$skill['id'].'\')">'.stringShorten($skill['short_description']).'</td>
+                            <td></td>
+                        </tr>';
+                    }                    
+                }
+
+                echo '    
+            </tbody>
+        </table>
+    </div>';
+}
+?>
 
 <script>
-    // Add click handler to level buttons
-    $('.level-buttons').children().click(changeLevel);
+    $('[data-toggle="tooltip"]').tooltip();
 
-    function changeLevelByName(name){
-        var levels = ['all','novice','intermediate','advanced','elite'];
-        var elIndex = levels.indexOf(name);
-        $('.level-buttons').children().eq(elIndex).trigger('click');
-    }
+    $('*[data-click="dbPwn"]').click(function () {
+            // Skill is known, must unknow
+            $thisBtn = $(this);
+            thisSkillName = $(this).data("skillname");
+            if ($thisBtn.hasClass('knowSkill')) {
+                $.ajax({
+                    type: "POST",
+                    url: "includes/skills.db.php",
+                    data: "action=Unknow&skillName="+thisSkillName,
+                    dataType: "text",
+                    success: function (data) {
+                        console.log(data);
+                        $thisBtn.removeClass('knowSkill').addClass('unknownSkill');
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "includes/skills.db.php",
+                    data: "action=Know&skillName="+thisSkillName,
+                    dataType: "text",
+                    success: function (data) {
+                        console.log(data);
+                        $thisBtn.removeClass('unknownSkill').addClass('knowSkill');
+                    }
+                });
+            }
+        });
 
-    function changeLevel() {
-        $('.level-buttons .active').removeClass('active');
-        $(this).addClass('active');
-
-        var levelText = $(this).text();
-        $('#crumb').text(levelText);
-        levelText = levelText.toLowerCase();
-
-        if (levelText == 'all') {
-            $('.skills').slideDown();
-        } else {
-            if (levelText != 'novice') {
-                $('.novice').slideUp();
-            }
-            if (levelText != 'intermediate') {
-                $('.intermediate').slideUp();
-            }
-            if (levelText != 'advanced') {
-                $('.advanced').slideUp();
-            }
-            if (levelText != 'elite') {
-                $('.elite').slideUp();
-            }
-            $('.' + levelText).slideDown();
-        }
-    }
-    
 </script>
