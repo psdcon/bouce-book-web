@@ -3,11 +3,13 @@ require_once('../includes/db.php');
 setTitle("Bounce Book");
 ?>
 
-<hr>
-<h3>Dashboard</h3>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 style="font-weight: 300;">Bounce Book</h1>
+    <p class="lead">An encyclopaedia of trampoline skills, what they are and how to do them. All packaged in a neat little app. Wouldn't that be wicked cool? I've been working on it but I need your help. I built this site so that we could work together to build up the information. Crowd sourcing is the best way to make this succeed!</p>
+  </div>
+</div>
 <p>
-  An encyclopaedia of trampoline skills, what they are and how to do them. All packaged in a neat little app. Wouldn't that be wicked cool? I've been working on it but I need your help. I built this site so that we could work together to build up the information. Crowd sourcing is the best way to make this succeed!
-  <br><br>
   If I've given you a username and pass you login, you can edit info and tick off skills that you know how to do. This allows the site to make suggestions for what skills to try next in the future.
   <br><br>
 

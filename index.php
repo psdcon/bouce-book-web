@@ -40,7 +40,7 @@ require_once ('includes/db.php');
         <a class="nav-link" href="#/">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#browse/all">Skills</a>
+        <a class="nav-link" href="#skills/all">Skills</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#progressions">Progressions</a>

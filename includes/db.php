@@ -24,7 +24,7 @@ function setTitle($title){
     ';
 }
 
-function levelToSafeId($level) {
+function string2SafeID($level) {
     return preg_replace('/\W+/','',strtolower($level));
 }
 

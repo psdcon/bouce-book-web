@@ -53,12 +53,12 @@ bbook.config(function($routeProvider) {
             controller  : 'mainController'
         })
 
-        .when('/browse/:skillLevel', {
-            templateUrl : 'pages/browse.php',
-            controller  : 'browseController'
+        .when('/skills/:skillLevel', {
+            templateUrl : 'pages/skills_list.php',
+            controller  : 'skillsController'
         })
 
-        .when('/browse/:skillLevel/:skillId', {
+        .when('/skills/:skillLevel/:skillId', {
             templateUrl : function(params){
                 return 'pages/skill_details.php?skill_id=' + params.skillId; },
                 controller  : 'skillDetailsController'
@@ -98,7 +98,7 @@ bbook.controller('mainController', function($scope) {
     $scope.message = 'Everyone aint this awesome!!';
 });
 
-bbook.controller('browseController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
+bbook.controller('skillsController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){
 
     // if($routeParams.skillLevel != 'all'){
     //     console.log($('#'+$routeParams.skillLevel).offset().top-60);
@@ -108,9 +108,9 @@ bbook.controller('browseController', ['$scope', '$routeParams', '$location', fun
     // }
 
     // // for changing page from code
-    // $scope.go = function ( path ) {
-    //   $location.path( path );
-    // };
+    $scope.go = function ( path ) {
+      $location.path( path );
+    };
 }]);
 
 bbook.controller('skillDetailsController', ['$scope', '$routeParams', '$location', function($scope, $routeParams, $location){

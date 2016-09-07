@@ -16,10 +16,25 @@ a:hover, a:active{
   height: 0;
 }
 
+/* skills list */
+.skills{
+  margin-bottom: 1rem;
+}
+.skill-row{
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #eceeef;
+}
+.skill-row-hover:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,.075);
+}
+
+a .fa {
+  text-decoration: inherit;
+}
+
 /* Return to top arrow */
-
-
-
 #return-to-top {
     position: fixed;
     bottom: 20px;
