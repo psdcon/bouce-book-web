@@ -47,7 +47,7 @@
 ?>
 
 <div class="alert alert-warning" role="alert">
-  <strong>Warning!</strong> This page isn't quite fleshed out yet. Bit like the rest of them.
+  <strong>Warning!</strong> This page isn't quite fleshed out yet either.
 </div>
 
 <hr>

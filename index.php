@@ -65,11 +65,11 @@ require_once ('includes/db.php');
             <!-- Show login link or user's name -->
           <?=($loggedIn)?
             '<div class="pull-md-right">
-              <li class="nav-item">
-                <a class="nav-link" href="includes/process_login.php">Logout</a>
-              </li>
               <li class="hello nav-item hidden-sm-down" title="This is not a link">
                 Hello '.$loggedIn.' :)
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="includes/process_login.php">Logout</a>
               </li>
             </div>
             ':

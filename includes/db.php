@@ -1,11 +1,11 @@
 <?php
 // echo $_SERVER['SERVER_NAME'];
-$_SERVER['SERVER_NAME'] == 'bouncebook'?
+$_SERVER['SERVER_NAME'] == 'bounce-book'?
     // If using local wamp mysql db...
     $db = new mysqli("localhost", "root", "", "bouncebook"): // for local environment
     // But want to use remote server from local
     // $db = new mysqli("192.185.18.236", "ucdtramp_user", "showmeALL", "ucdtramp_bb"):
-    $db = new mysqli("127.0.0.1", "ucdtramp_user", "showmeALL", "ucdtramp_bb"); // server environment
+    $db = new mysqli("127.0.0.1", "bouncebook", "YyfFfor5NQQ8avlB", "bouncebook"); // server environment
 
 
 session_start(); // For login

@@ -129,18 +129,14 @@ echo '
   </div>
 
   <div class="row">
-    <div class="form-group">
-      <div class="col-sm-6">
-        <label for="lateral_prog">Lateral Progressions</label><br>
-        <select style="width:100%" id="lateral_prog" class="" multiple="multiple"></select>
-      </div>
+    <div class="col-sm-6 form-group">
+      <label for="lateral_prog">Lateral Progressions</label><br>
+      <select style="width:100%" id="lateral_prog" class="" multiple="multiple"></select>
     </div>
-    <div class="form-group">
-      <div class="col-sm-6">
-        <label for="linear_prog">Linear Progressions</label><br>
-        <select style="width:100%" id="linear_prog" class="" multiple="multiple"></select>
-      </div>
-    </div>
+    <div class="col-sm-6 form-group">
+      <label for="linear_prog">Linear Progressions</label><br>
+      <select style="width:100%" id="linear_prog" class="" multiple="multiple"></select>
+  </div>
   </div>
 
   <div class="row form-group">

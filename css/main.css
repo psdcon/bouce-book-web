@@ -6,6 +6,30 @@ a:hover, a:active{
 	/*animation: hop 0.2s both; */
 }
 
+/* Navbar mods */
+.bg-inverse {
+    color: #fff!important;
+    background-color: #26a69a!important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.8);
+}
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .active>.nav-link:focus, .navbar-dark .navbar-nav .active>.nav-link:hover, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.active:focus, .navbar-dark .navbar-nav .nav-link.active:hover, .navbar-dark .navbar-nav .nav-link.open, .navbar-dark .navbar-nav .nav-link.open:focus, .navbar-dark .navbar-nav .nav-link.open:hover, .navbar-dark .navbar-nav .open>.nav-link, .navbar-dark .navbar-nav .open>.nav-link:focus, .navbar-dark .navbar-nav .open>.nav-link:hover{
+  font-weight: 600;
+}
+.navbar-nav .nav-item {
+  position: relative;
+}
+.active:after{
+  position: absolute;
+  bottom: -8px;
+  left: -10%;
+  width: 120%;
+  height: 6px;
+  background-color: #80CBC4;
+  content: '';
+}
+
 .main{
   margin-top: 1rem;
 }

@@ -18,7 +18,6 @@ function stringShorten($string, $desiredLen = 100) {
   }
 </style>
 
-<hr>
 <h2>Skills</h2>
 <p>
   Below is a list of all (most) trampoline skills. Clicking on a skill will show a more detailed view. The check mark can be checked to mark the skill as part of your repertoire.

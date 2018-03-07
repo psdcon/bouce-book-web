@@ -6,11 +6,11 @@ setTitle("Bounce Book");
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 style="font-weight: 300;">Bounce Book</h1>
-    <p class="lead">An encyclopaedia of trampoline skills, what they are and how to do them. All packaged in a neat little app. Wouldn't that be wicked cool? I've been working on it but I need your help. I built this site so that we could work together to build up the information. Crowd sourcing is the best way to make this succeed!</p>
+    <p class="lead">An encyclopaedia of trampoline skills, what they are and how to do them, all packaged in a neat little smartphone app. Track your progress and get suggestions. Wouldn't that be wicked cool? I've been working on it but I need your help. I want to use this site so that we can work together to build up the database of skills. Crowd sourcing is the best way to make this succeed!</p>
   </div>
 </div>
 <p>
-  If I've given you a username and pass you login, you can edit info and tick off skills that you know how to do. This allows the site to make suggestions for what skills to try next in the future.
+  If you've got a username and password from me you can login, which allows you to edit info and tick off skills that you know how to do. This allows the site to make suggestions for skills to try in the future.
   <br><br>
 
   No username, no problem.<br>
@@ -23,12 +23,12 @@ setTitle("Bounce Book");
 <hr>
 <h3>Features</h3>
 <ul>
- <li>Encyclopaedia of trampoline skills with vid demos</li>
- <li>Progression suggestions</li>
- <li>Helps track your progress</li>
- <li>Sample workout sheets</li>
- <li>Sample Routines with vids</li>
- <li>Misc: TOF/High bounce app, judging, FIG, tariff guides?</li>
+  <li>Encyclopaedia of trampoline skills with video demos and tutorials</li>
+  <li>Track progress and make notes</li>
+  <li>Progression suggestions</li>
+  <li>Sample workout sheets</li>
+  <li>Sample Routines with vids</li>
+  <li>Misc: TOF/High bounce app, judging, FIG, tariff guides?</li>
 </ul>
 
 <br>
